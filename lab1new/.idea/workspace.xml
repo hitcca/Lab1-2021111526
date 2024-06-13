@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="49807de7-4dcd-4188-a5cf-be6421700267" name="更改" comment="">
+      <change afterPath="$PROJECT_DIR$/demo/src/main/java/com/example/MyGraphTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/demo/target/classes/com/example/Case1.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/demo/target/classes/com/example/Case2.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/demo/target/test-classes/com/example/Graph.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/demo/target/test-classes/com/example/MyGraphTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/src/main/java/com/example/Lab1.java" beforeDir="false" afterPath="$PROJECT_DIR$/demo/src/main/java/com/example/Lab1.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/src/test/java/com/example/AppTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/demo/src/test/java/com/example/AppTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/target/classes/com/example/Lab1.class" beforeDir="false" afterPath="$PROJECT_DIR$/demo/target/classes/com/example/Lab1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/target/classes/com/example/MYGraph.class" beforeDir="false" afterPath="$PROJECT_DIR$/demo/target/classes/com/example/MYGraph.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/target/test-classes/com/example/AppTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/demo/target/test-classes/com/example/AppTest.class" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JUnit5 Test Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 2
+}</component>
+  <component name="ProjectId" id="2hgwl89kUmk1xF6o8s0gmyI9eQI" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "Downloaded.Files.Path.Enabled": "false",
+    "JUnit.Case1.executor": "Coverage",
+    "JUnit.Case1.testWord1NotInGraph.executor": "Coverage",
+    "Repository.Attach.Annotations": "false",
+    "Repository.Attach.JavaDocs": "false",
+    "Repository.Attach.Sources": "false",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
+    "create.test.in.the.same.root": "true",
+    "git-widget-placeholder": "2021111526",
+    "ignore.virus.scanning.warn.message": "true",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "D:/vscode/ruanjianlab1/lab1new",
+    "project.structure.last.edited": "全局库",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "应用程序.Lab1.executor": "Run"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="main.java.com.example" />
+    </key>
+  </component>
+  <component name="RunManager" selected="JUnit.Case1">
+    <configuration name="Lab1" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="main.java.com.example.Lab1" />
+      <module name="lab1new" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="main.java.com.example.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Case1" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="lab1new" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="main.java.com.example.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="main.java.com.example" />
+      <option name="MAIN_CLASS_NAME" value="main.java.com.example.Case1" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Case1.testWord1NotInGraph" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="lab1new" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="main.java.com.example.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="main.java.com.example" />
+      <option name="MAIN_CLASS_NAME" value="main.java.com.example.Case1" />
+      <option name="METHOD_NAME" value="testWord1NotInGraph" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.Case1" />
+        <item itemvalue="JUnit.Case1.testWord1NotInGraph" />
+        <item itemvalue="应用程序.Lab1" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="应用程序级" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="默认任务">
+      <changelist id="49807de7-4dcd-4188-a5cf-be6421700267" name="更改" comment="" />
+      <created>1718029177183</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1718029177183</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+  </component>
+</project>
