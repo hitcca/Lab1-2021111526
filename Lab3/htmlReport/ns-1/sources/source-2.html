@@ -1,0 +1,478 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=GBK"> 
+  <title>Coverage Report > Lab1</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">&lt;empty package name&gt;</a>
+</div>
+
+<h1>Coverage Summary for Class: Lab1 (&lt;empty package name&gt;)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Branch, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">Lab1</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/2)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/8)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/39)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;import java.io.BufferedReader;
+&nbsp;import java.io.BufferedWriter;
+&nbsp;import java.io.FileReader;
+&nbsp;import java.io.FileWriter;
+&nbsp;import java.io.IOException;
+&nbsp;import java.util.AbstractMap;
+&nbsp;import java.util.ArrayList;
+&nbsp;import java.util.Collections;
+&nbsp;import java.util.HashMap;
+&nbsp;import java.util.HashSet;
+&nbsp;import java.util.List;
+&nbsp;import java.util.Map;
+&nbsp;import java.util.PriorityQueue;
+&nbsp;import java.util.Random;
+&nbsp;import java.util.Scanner;
+&nbsp;import java.util.Set;
+&nbsp;import java.util.concurrent.TimeUnit;
+&nbsp;import java.util.stream.Collectors;
+&nbsp;
+&nbsp;/**
+&nbsp; * Main class for the lab.
+&nbsp; */
+<b class="nc">&nbsp;public class Lab1 {</b>
+&nbsp;  /**
+&nbsp;   * Main class for the lab.
+&nbsp;   */
+&nbsp;  @SuppressWarnings(&quot;checkstyle:WhitespaceAround&quot;)
+&nbsp;  public static void main(String[] args) {
+<b class="nc">&nbsp;    Scanner scanner = new Scanner(System.in);</b>
+<b class="nc">&nbsp;    System.out.println(&quot;请输入文本文件路径：&quot;);</b>
+<b class="nc">&nbsp;    String  filePath= scanner.nextLine();</b>
+<b class="nc">&nbsp;    try (FileWriter writer = new FileWriter(&quot;random_walk_result.txt&quot;, false)) {</b>
+&nbsp;      // Empty the output file
+<b class="nc">&nbsp;    } catch (IOException e) {</b>
+<b class="nc">&nbsp;      System.out.println(&quot;清空输出文件出错&quot; + e.getMessage());</b>
+&nbsp;      // return;
+&nbsp;    }
+&nbsp;
+<b class="nc">&nbsp;    MyGraph graph = new MyGraph();</b>
+&nbsp;    try {
+<b class="nc">&nbsp;      graph.readFromFile(filePath);</b>
+<b class="nc">&nbsp;    } catch (IOException e) {</b>
+<b class="nc">&nbsp;      System.out.println(&quot;读取文件时出错：&quot; + e.getMessage());</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    while (true) {
+<b class="nc">&nbsp;      System.out.println(&quot;请选择功能：&quot;);</b>
+<b class="nc">&nbsp;      System.out.println(&quot;1. 展示有向图&quot;);</b>
+<b class="nc">&nbsp;      System.out.println(&quot;2. 查询桥接词&quot;);</b>
+<b class="nc">&nbsp;      System.out.println(&quot;3. 根据桥接词生成新文本&quot;);</b>
+<b class="nc">&nbsp;      System.out.println(&quot;4. 计算两个单词之间的最短路径&quot;);</b>
+<b class="nc">&nbsp;      System.out.println(&quot;5. 随机游走&quot;);</b>
+<b class="nc">&nbsp;      System.out.println(&quot;0. 退出&quot;);</b>
+&nbsp;
+<b class="nc">&nbsp;      int choice = scanner.nextInt();</b>
+<b class="nc">&nbsp;      scanner.nextLine(); // Consume newline</b>
+&nbsp;
+<b class="nc">&nbsp;      switch (choice) {</b>
+&nbsp;        case 1:
+<b class="nc">&nbsp;          graph.showDirectedGraph();</b>
+&nbsp;          break;
+&nbsp;        case 2:
+<b class="nc">&nbsp;          System.out.println(&quot;请输入两个单词：&quot;);</b>
+<b class="nc">&nbsp;          String word1 = scanner.next();</b>
+<b class="nc">&nbsp;          String word2 = scanner.next();</b>
+<b class="nc">&nbsp;          System.out.println(graph.queryBridgeWords(word1, word2));</b>
+&nbsp;          break;
+&nbsp;        case 3:
+<b class="nc">&nbsp;          System.out.println(&quot;请输入新文本：&quot;);</b>
+<b class="nc">&nbsp;          String newText = scanner.nextLine();</b>
+<b class="nc">&nbsp;          System.out.println(graph.generateNewText(newText));</b>
+&nbsp;          break;
+&nbsp;        case 4:
+<b class="nc">&nbsp;          System.out.println(&quot;请输入一个或两个单词：&quot;);</b>
+<b class="nc">&nbsp;          word1 = scanner.next();</b>
+<b class="nc">&nbsp;          String input = scanner.nextLine().trim();</b>
+<b class="nc">&nbsp;          if (input.isEmpty()) {</b>
+<b class="nc">&nbsp;            System.out.println(graph.calcShortestPath(word1));</b>
+&nbsp;          } else {
+<b class="nc">&nbsp;            word2 = input;</b>
+<b class="nc">&nbsp;            System.out.println(graph.calcShortestPath(word1, word2));</b>
+&nbsp;          }
+&nbsp;          break;
+&nbsp;        case 5:
+<b class="nc">&nbsp;          System.out.println(&quot;按任意键停止遍历...&quot;);</b>
+<b class="nc">&nbsp;          graph.randomWalk(scanner);</b>
+&nbsp;          break;
+&nbsp;        case 0:
+&nbsp;          return;
+&nbsp;        default:
+<b class="nc">&nbsp;          System.out.println(&quot;无效选择，请重新输入。&quot;);</b>
+&nbsp;          break;
+&nbsp;      }
+&nbsp;    }
+&nbsp;  }
+&nbsp;}
+&nbsp;
+&nbsp;/**
+&nbsp; * Graph class for representing and manipulating a directed graph.
+&nbsp; */
+&nbsp;class MyGraph {
+&nbsp;
+&nbsp;  Map&lt;String, Map&lt;String, Integer&gt;&gt; adjList = new HashMap&lt;&gt;();
+&nbsp;
+&nbsp;  /**
+&nbsp;   * Reads a graph from a file.
+&nbsp;   *
+&nbsp;   * @param filePath the path to the file
+&nbsp;   * @throws IOException if an I/O error occurs
+&nbsp;   */
+&nbsp;  public void readFromFile(String filePath) throws IOException {
+&nbsp;    StringBuilder mergedContent = new StringBuilder();
+&nbsp;    try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
+&nbsp;      String line;
+&nbsp;      while ((line = reader.readLine()) != null) {
+&nbsp;        mergedContent.append(line).append(&quot; &quot;);
+&nbsp;      }
+&nbsp;    }
+&nbsp;    processLine(mergedContent.toString());
+&nbsp;  }
+&nbsp;
+&nbsp;  /**
+&nbsp;   * Processes a line of text to build the adjacency list.
+&nbsp;   *
+&nbsp;   * @param line the line of text
+&nbsp;   */
+&nbsp;  private void processLine(String line) {
+&nbsp;    String[] words = line.replaceAll(&quot;[^a-zA-Z ]&quot;, &quot; &quot;).toLowerCase().split(&quot;\\s+&quot;);
+&nbsp;    for (int i = 0; i &lt; words.length - 1; i++) {
+&nbsp;      String word1 = words[i];
+&nbsp;      String word2 = words[i + 1];
+&nbsp;      adjList.computeIfAbsent(word1, k -&gt; new HashMap&lt;&gt;()).merge(word2, 1, Integer::sum);
+&nbsp;    }
+&nbsp;  }
+&nbsp;
+&nbsp;  /**
+&nbsp;   * Displays the directed graph.
+&nbsp;   */
+&nbsp;  public void showDirectedGraph() {
+&nbsp;    for (Map.Entry&lt;String, Map&lt;String, Integer&gt;&gt; entry : adjList.entrySet()) {
+&nbsp;      String from = entry.getKey();
+&nbsp;      for (Map.Entry&lt;String, Integer&gt; edge : entry.getValue().entrySet()) {
+&nbsp;        String to = edge.getKey();
+&nbsp;        int weight = edge.getValue();
+&nbsp;        System.out.println(from + &quot; -&gt; &quot; + to + &quot; [weight=&quot; + weight + &quot;]&quot;);
+&nbsp;      }
+&nbsp;    }
+&nbsp;  }
+&nbsp;
+&nbsp;  /**
+&nbsp;   * Queries bridge words between two given words.
+&nbsp;   *
+&nbsp;   * @param word1 the first word
+&nbsp;   * @param word2 the second word
+&nbsp;   * @return a string describing the bridge words
+&nbsp;   */
+&nbsp;  public String queryBridgeWords(String word1, String word2) {
+&nbsp;    if (!adjList.containsKey(word1) || !adjList.containsKey(word2)) {
+&nbsp;      return &quot;No &quot; + word1 + &quot; or &quot; + word2 + &quot; in the graph!&quot;;
+&nbsp;    }
+&nbsp;    Set&lt;String&gt; bridgeWords = adjList.get(word1).keySet().stream()
+&nbsp;        .filter(w -&gt; adjList.get(w) != null &amp;&amp; adjList.get(w).containsKey(word2))
+&nbsp;        .collect(Collectors.toSet());
+&nbsp;    if (bridgeWords.isEmpty()) {
+&nbsp;      return &quot;No bridge words from &quot; + word1 + &quot; to &quot; + word2 + &quot;!&quot;;
+&nbsp;    }
+&nbsp;    return &quot;The bridge words from &quot; + word1 + &quot; to &quot;
+&nbsp;      + word2 + &quot; are: &quot; + String.join(&quot;, &quot;, bridgeWords) + &quot;.&quot;;
+&nbsp;  }
+&nbsp;
+&nbsp;  /**
+&nbsp;   * Generates new text based on the input text using bridge words.
+&nbsp;   *
+&nbsp;   * @param inputText the input text
+&nbsp;   * @return the generated text
+&nbsp;   */
+&nbsp;  public String generateNewText(String inputText) {
+&nbsp;    String[] words =
+&nbsp;        inputText.replaceAll(&quot;[^a-zA-Z ]&quot;, &quot; &quot;).toLowerCase().split(&quot;\\s+&quot;);
+&nbsp;    if (words.length &lt; 2) {
+&nbsp;      return inputText;
+&nbsp;    }
+&nbsp;
+&nbsp;    StringBuilder result = new StringBuilder();
+&nbsp;    for (int j = 0; j &lt; words.length - 1; j++) {
+&nbsp;      final int i = j;
+&nbsp;      result.append(words[i]).append(&quot; &quot;);
+&nbsp;      Set&lt;String&gt; bridgeWords =
+&nbsp;          adjList.getOrDefault(words[i], Collections.emptyMap()).keySet().stream()
+&nbsp;          .filter(w -&gt; adjList.get(w) != null &amp;&amp; adjList.get(w).containsKey(words[i + 1]))
+&nbsp;          .collect(Collectors.toSet());
+&nbsp;      if (!bridgeWords.isEmpty()) {
+&nbsp;        String bridgeWord = bridgeWords.iterator().next(); // Randomly choose one bridge word
+&nbsp;        result.append(bridgeWord).append(&quot; &quot;);
+&nbsp;      }
+&nbsp;    }
+&nbsp;    result.append(words[words.length - 1]);
+&nbsp;    return result.toString().trim();
+&nbsp;  }
+&nbsp;
+&nbsp;  /**
+&nbsp;   * Calculates the shortest path between two words.
+&nbsp;   *
+&nbsp;   * @param word1 the first word
+&nbsp;   * @param word2 the second word
+&nbsp;   * @return a string describing the shortest path
+&nbsp;   */
+&nbsp;  public String calcShortestPath(String word1, String word2) {
+&nbsp;    if (!adjList.containsKey(word1) || !adjList.containsKey(word2)) {
+&nbsp;      return &quot;No &quot; + word1 + &quot; or &quot; + word2 + &quot; in the graph!&quot;;
+&nbsp;    }
+&nbsp;    Map&lt;String, Integer&gt; distances = new HashMap&lt;&gt;();
+&nbsp;    Map&lt;String, String&gt; previous = new HashMap&lt;&gt;();
+&nbsp;    PriorityQueue&lt;Map.Entry&lt;String, Integer&gt;&gt; queue =
+&nbsp;        new PriorityQueue&lt;&gt;(Map.Entry.comparingByValue());
+&nbsp;    distances.put(word1, 0);
+&nbsp;    queue.add(new AbstractMap.SimpleEntry&lt;&gt;(word1, 0));
+&nbsp;
+&nbsp;    while (!queue.isEmpty()) {
+&nbsp;      String current = queue.poll().getKey();
+&nbsp;      if (current.equals(word2)) {
+&nbsp;        break;
+&nbsp;      }
+&nbsp;      if (!adjList.containsKey(current)) {
+&nbsp;        continue;
+&nbsp;      }
+&nbsp;      for (Map.Entry&lt;String, Integer&gt; neighbor : adjList.get(current).entrySet()) {
+&nbsp;        String neighborWord = neighbor.getKey();
+&nbsp;        int weight = neighbor.getValue();
+&nbsp;        int newDist = distances.get(current) + weight;
+&nbsp;        if (newDist &lt; distances.getOrDefault(neighborWord, Integer.MAX_VALUE)) {
+&nbsp;          distances.put(neighborWord, newDist);
+&nbsp;          previous.put(neighborWord, current);
+&nbsp;          queue.add(new AbstractMap.SimpleEntry&lt;&gt;(neighborWord, newDist));
+&nbsp;        }
+&nbsp;      }
+&nbsp;    }
+&nbsp;
+&nbsp;    if (!distances.containsKey(word2)) {
+&nbsp;      return &quot;No path from &quot; + word1 + &quot; to &quot; + word2 + &quot;!&quot;;
+&nbsp;    }
+&nbsp;
+&nbsp;    List&lt;String&gt; path = new ArrayList&lt;&gt;();
+&nbsp;    for (String at = word2; at != null; at = previous.get(at)) {
+&nbsp;      path.add(at);
+&nbsp;    }
+&nbsp;    Collections.reverse(path);
+&nbsp;    return &quot;Shortest path from &quot; + word1 + &quot; to &quot; + word2 + &quot;: &quot;
+&nbsp;      + String.join(&quot; -&gt; &quot;, path) + &quot; (weight=&quot; + distances.get(word2) + &quot;)&quot;;
+&nbsp;  }
+&nbsp;
+&nbsp;  /**
+&nbsp;   * Calculates the shortest path from a given word to all other words.
+&nbsp;   *
+&nbsp;   * @param word the word
+&nbsp;   * @return a string describing the shortest paths
+&nbsp;   */
+&nbsp;  public String calcShortestPath(String word) {
+&nbsp;    if (!adjList.containsKey(word)) {
+&nbsp;      return &quot;No &quot; + word + &quot; in the graph!&quot;;
+&nbsp;    }
+&nbsp;
+&nbsp;    Map&lt;String, Integer&gt; distances = new HashMap&lt;&gt;();
+&nbsp;    Map&lt;String, String&gt; previous = new HashMap&lt;&gt;();
+&nbsp;    PriorityQueue&lt;Map.Entry&lt;String, Integer&gt;&gt; queue =
+&nbsp;        new PriorityQueue&lt;&gt;(Map.Entry.comparingByValue());
+&nbsp;    distances.put(word, 0);
+&nbsp;    queue.add(new AbstractMap.SimpleEntry&lt;&gt;(word, 0));
+&nbsp;
+&nbsp;    while (!queue.isEmpty()) {
+&nbsp;      String current = queue.poll().getKey();
+&nbsp;      if (!adjList.containsKey(current)) {
+&nbsp;        continue;
+&nbsp;      }
+&nbsp;      for (Map.Entry&lt;String, Integer&gt; neighbor : adjList.get(current).entrySet()) {
+&nbsp;        String neighborWord = neighbor.getKey();
+&nbsp;        int weight = neighbor.getValue();
+&nbsp;        int newDist = distances.get(current) + weight;
+&nbsp;        if (newDist &lt; distances.getOrDefault(neighborWord, Integer.MAX_VALUE)) {
+&nbsp;          distances.put(neighborWord, newDist);
+&nbsp;          previous.put(neighborWord, current);
+&nbsp;          queue.add(new AbstractMap.SimpleEntry&lt;&gt;(neighborWord, newDist));
+&nbsp;        }
+&nbsp;      }
+&nbsp;    }
+&nbsp;
+&nbsp;    StringBuilder result = new StringBuilder();
+&nbsp;    for (Map.Entry&lt;String, Integer&gt; entry : distances.entrySet()) {
+&nbsp;      String target = entry.getKey();
+&nbsp;      int distance = entry.getValue();
+&nbsp;      if (!target.equals(word)) {
+&nbsp;        List&lt;String&gt; path = new ArrayList&lt;&gt;();
+&nbsp;        for (String at = target; at != null; at = previous.get(at)) {
+&nbsp;          path.add(at);
+&nbsp;        }
+&nbsp;        Collections.reverse(path);
+&nbsp;        result.append(&quot;Shortest path from &quot;).append(word).append(&quot; to &quot;).append(target).append(&quot;: &quot;)
+&nbsp;            .append(String.join(&quot; -&gt; &quot;, path)).append(&quot; (weight=&quot;).append(distance).append(&quot;)\n&quot;);
+&nbsp;      }
+&nbsp;    }
+&nbsp;    return result.toString().trim();
+&nbsp;  }
+&nbsp;
+&nbsp;  /**
+&nbsp;   * Performs a random walk on the graph.
+&nbsp;   *
+&nbsp;   * @param scanner the scanner to detect user input
+&nbsp;   */
+&nbsp;  public void randomWalk(Scanner scanner) {
+&nbsp;    if (adjList.isEmpty()) {
+&nbsp;      return;
+&nbsp;    }
+&nbsp;
+&nbsp;    List&lt;String&gt; nodes = new ArrayList&lt;&gt;(adjList.keySet());
+&nbsp;    String current = nodes.get(new Random().nextInt(nodes.size()));
+&nbsp;    StringBuilder walk = new StringBuilder(current);
+&nbsp;
+&nbsp;    Set&lt;String&gt; visitedEdges = new HashSet&lt;&gt;();
+&nbsp;    StringBuilder walkLog = new StringBuilder(current);
+&nbsp;
+&nbsp;    while (adjList.containsKey(current) &amp;&amp; !adjList.get(current).isEmpty()) {
+&nbsp;      System.out.println(&quot;Current Node: &quot; + current);
+&nbsp;      try {
+&nbsp;        TimeUnit.SECONDS.sleep(1);
+&nbsp;      } catch (InterruptedException e) {
+&nbsp;        System.out.println(&quot;Random walk interrupted.&quot;);
+&nbsp;        break;
+&nbsp;      }
+&nbsp;      try {
+&nbsp;        if (System.in.available() &gt; 0) {
+&nbsp;          scanner.nextLine();
+&nbsp;          break;
+&nbsp;        }
+&nbsp;      } catch (IOException e) {
+&nbsp;        System.out.println(&quot;Error checking input: &quot; + e.getMessage());
+&nbsp;        break;
+&nbsp;      }
+&nbsp;
+&nbsp;      List&lt;Map.Entry&lt;String, Integer&gt;&gt; edges = new ArrayList&lt;&gt;(adjList.get(current).entrySet());
+&nbsp;      Map.Entry&lt;String, Integer&gt; edge = edges.get(new Random().nextInt(edges.size()));
+&nbsp;      String edgeRepresentation = current + &quot; -&gt; &quot; + edge.getKey();
+&nbsp;
+&nbsp;      if (visitedEdges.contains(edgeRepresentation)) {
+&nbsp;        break;
+&nbsp;      }
+&nbsp;      visitedEdges.add(edgeRepresentation);
+&nbsp;      current = edge.getKey();
+&nbsp;      walk.append(&quot; -&gt; &quot;).append(current);
+&nbsp;      walkLog.append(&quot; -&gt; &quot;).append(current);
+&nbsp;    }
+&nbsp;
+&nbsp;    System.out.println(&quot;Random Walk Result: &quot; + walk.toString());
+&nbsp;
+&nbsp;    try (BufferedWriter writer =
+&nbsp;           new BufferedWriter(new FileWriter(&quot;random_walk_result.txt&quot;, true))) {
+&nbsp;      writer.newLine();
+&nbsp;      writer.write(walkLog.toString());
+&nbsp;    } catch (IOException e) {
+&nbsp;      System.out.println(&quot;Error writing to file: &quot; + e.getMessage());
+&nbsp;    }
+&nbsp;  }
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2024-06-11 09:33</div>
+</div>
+</body>
+</html>
