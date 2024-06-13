@@ -1,32 +1,16 @@
-package test.java.com.example;
-
-import org.junit.jupiter.api.Test;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
-
-/**
- * Unit test for simple App.
- */
-class AppTest {
-  /**
-   * Rigorous Test.
-   */
-  @Test
-  void testApp() {
-    assertEquals(1, 1);
-  }
-}
 package main.java.com.example;
 
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import test.java.com.example.Graph;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.*;
 import java.util.stream.Collectors;
 
-class MyGraphTest {
+class Case1 {
     private Graph graph;
 
     @BeforeEach
@@ -75,10 +59,10 @@ class MyGraphTest {
     }
 }
 
-public class Graph {
+class Case2 {
     Map<String, Map<String, Integer>> adjList = new HashMap<>();
 
-    public void addEdge(String from, String to) {
+    void addEdge(String from, String to) {
         adjList.putIfAbsent(from, new HashMap<>());
         adjList.get(from).put(to, 1); // 假设所有边的权重为1
     }

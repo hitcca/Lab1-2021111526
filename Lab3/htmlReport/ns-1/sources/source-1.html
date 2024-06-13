@@ -1,0 +1,173 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=GBK"> 
+  <title>Coverage Report > BlackTest</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">&lt;empty package name&gt;</a>
+</div>
+
+<h1>Coverage Summary for Class: BlackTest (&lt;empty package name&gt;)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">BlackTest</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/9)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/26)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;import java.io.IOException;
+&nbsp;import java.util.HashMap;
+&nbsp;import org.junit.jupiter.api.BeforeEach;
+&nbsp;import org.junit.jupiter.api.Test;
+&nbsp;import static org.junit.jupiter.api.Assertions.*;
+&nbsp;
+<b class="nc">&nbsp;class BlackTest {</b>
+&nbsp;  private MyGraph graph;
+&nbsp;
+&nbsp;  @BeforeEach
+&nbsp;  void setUp() {
+<b class="nc">&nbsp;    graph = new MyGraph();</b>
+&nbsp;    // 初始化图结构，例如：
+<b class="nc">&nbsp;    graph.adjList.put(&quot;apple&quot;, new HashMap&lt;&gt;());</b>
+<b class="nc">&nbsp;    graph.adjList.get(&quot;apple&quot;).put(&quot;banana&quot;, 1);</b>
+<b class="nc">&nbsp;    graph.adjList.put(&quot;banana&quot;, new HashMap&lt;&gt;());</b>
+<b class="nc">&nbsp;    graph.adjList.get(&quot;banana&quot;).put(&quot;cherry&quot;, 1);</b>
+<b class="nc">&nbsp;    graph.adjList.get(&quot;banana&quot;).put(&quot;date&quot;, 1);</b>
+<b class="nc">&nbsp;    graph.adjList.put(&quot;cherry&quot;, new HashMap&lt;&gt;());</b>
+<b class="nc">&nbsp;    graph.adjList.put(&quot;date&quot;, new HashMap&lt;&gt;());</b>
+<b class="nc">&nbsp;    graph.adjList.put(&quot;orange&quot;, new HashMap&lt;&gt;());</b>
+<b class="nc">&nbsp;    graph.adjList.get(&quot;apple&quot;).put(&quot;orange&quot;, 1);</b>
+<b class="nc">&nbsp;    graph.adjList.get(&quot;orange&quot;).put(&quot;cherry&quot;, 1);</b>
+&nbsp;  }
+&nbsp;
+&nbsp;  @Test
+&nbsp;  void testQueryBridgeWords_WithBridgeWords() {
+<b class="nc">&nbsp;    String result = graph.queryBridgeWords(&quot;apple&quot;, &quot;date&quot;);</b>
+<b class="nc">&nbsp;    assertEquals(&quot;The bridge words from apple to date are: banana.&quot;, result);</b>
+&nbsp;  }
+&nbsp;
+&nbsp;  @Test
+&nbsp;  void testQueryBridgeWords_NoBridgeWords() {
+<b class="nc">&nbsp;    String result = graph.queryBridgeWords(&quot;banana&quot;, &quot;date&quot;);</b>
+<b class="nc">&nbsp;    assertEquals(&quot;No bridge words from banana to date!&quot;, result);</b>
+&nbsp;  }
+&nbsp;
+&nbsp;  @Test
+&nbsp;  void testQueryBridgeWords_OneWordNotInGraph() {
+<b class="nc">&nbsp;    String result = graph.queryBridgeWords(&quot;apple&quot;, &quot;cherry&quot;);</b>
+<b class="nc">&nbsp;    assertEquals(&quot;The bridge words from apple to cherry are: banana, orange.&quot;, result);</b>
+&nbsp;  }
+&nbsp;
+&nbsp;  @Test
+&nbsp;  void testQueryBridgeWords_BothWordsNotInGraph() {
+<b class="nc">&nbsp;    String result = graph.queryBridgeWords(&quot;kiwi&quot;, &quot;mango&quot;);</b>
+<b class="nc">&nbsp;    assertEquals(&quot;No kiwi or mango in the graph!&quot;, result);</b>
+&nbsp;  }
+&nbsp;
+&nbsp;  @Test
+&nbsp;  void testQueryBridgeWords_SameWord() {
+&nbsp;    // 测试word1和word2相同的情况
+<b class="nc">&nbsp;    String sameWord = graph.queryBridgeWords(&quot;apple&quot;, &quot;apple&quot;);</b>
+<b class="nc">&nbsp;    assertEquals(&quot;No bridge words from apple to apple!&quot;, sameWord);</b>
+&nbsp;  }
+&nbsp;
+&nbsp;  @Test
+&nbsp;  void testQueryBridgeWords_LeftNull() {
+&nbsp;    // 测试word1和word2为null的情况（如果方法允许null输入）
+<b class="nc">&nbsp;    String resultWord1Null = graph.queryBridgeWords(null, &quot;date&quot;);</b>
+<b class="nc">&nbsp;    assertEquals(&quot;No null or date in the graph!&quot;, resultWord1Null);</b>
+&nbsp;  }
+&nbsp;
+&nbsp;  @Test
+&nbsp;  void testQueryBridgeWords_RightNull() {
+<b class="nc">&nbsp;    String resultWord2Null = graph.queryBridgeWords(&quot;apple&quot;, null);</b>
+<b class="nc">&nbsp;    assertEquals(&quot;No apple or null in the graph!&quot;, resultWord2Null);</b>
+&nbsp;  }
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2024-06-11 09:33</div>
+</div>
+</body>
+</html>

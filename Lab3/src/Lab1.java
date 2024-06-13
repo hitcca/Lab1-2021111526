@@ -1,5 +1,3 @@
-package main.java.com.example;
-
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.FileReader;
@@ -26,12 +24,13 @@ public class Lab1 {
   /**
    * Main class for the lab.
    */
+  @SuppressWarnings("checkstyle:WhitespaceAround")
   public static void main(String[] args) {
     Scanner scanner = new Scanner(System.in);
     System.out.println("请输入文本文件路径：");
-    String filePath = scanner.nextLine();
+    String  filePath= scanner.nextLine();
     try (FileWriter writer = new FileWriter("random_walk_result.txt", false)) {
-      // Empty the output file
+      int flag = 1; // Empty the output file
     } catch (IOException e) {
       System.out.println("清空输出文件出错" + e.getMessage());
       // return;
@@ -101,7 +100,7 @@ public class Lab1 {
  */
 class MyGraph {
 
-  private Map<String, Map<String, Integer>> adjList = new HashMap<>();
+  Map<String, Map<String, Integer>> adjList = new HashMap<>();
 
   /**
    * Reads a graph from a file.
@@ -159,13 +158,14 @@ class MyGraph {
     if (!adjList.containsKey(word1) || !adjList.containsKey(word2)) {
       return "No " + word1 + " or " + word2 + " in the graph!";
     }
-    Set<String> bridgeWords = adjList.get(word1).keySet().stream()
-        .filter(w -> adjList.get(w) != null && adjList.get(w).containsKey(word2))
+    Set<String> bridgeWords = adjList.get(word1)
+        .keySet().stream().filter(w -> adjList.get(w) != null && adjList.get(w).containsKey(word2))
         .collect(Collectors.toSet());
     if (bridgeWords.isEmpty()) {
       return "No bridge words from " + word1 + " to " + word2 + "!";
     }
-    return "The bridge words from " + word1 + " to " + word2 + " are: " + String.join(", ", bridgeWords) + ".";
+    return "The bridge words from " + word1 + " to "
+      + word2 + " are: " + String.join(", ", bridgeWords) + ".";
   }
 
   /**
@@ -175,7 +175,8 @@ class MyGraph {
    * @return the generated text
    */
   public String generateNewText(String inputText) {
-    String[] words = inputText.replaceAll("[^a-zA-Z ]", " ").toLowerCase().split("\\s+");
+    String[] words =
+        inputText.replaceAll("[^a-zA-Z ]", " ").toLowerCase().split("\\s+");
     if (words.length < 2) {
       return inputText;
     }
@@ -184,7 +185,8 @@ class MyGraph {
     for (int j = 0; j < words.length - 1; j++) {
       final int i = j;
       result.append(words[i]).append(" ");
-      Set<String> bridgeWords = adjList.getOrDefault(words[i], Collections.emptyMap()).keySet().stream()
+      Set<String> bridgeWords =
+          adjList.getOrDefault(words[i], Collections.emptyMap()).keySet().stream()
           .filter(w -> adjList.get(w) != null && adjList.get(w).containsKey(words[i + 1]))
           .collect(Collectors.toSet());
       if (!bridgeWords.isEmpty()) {
@@ -209,7 +211,8 @@ class MyGraph {
     }
     Map<String, Integer> distances = new HashMap<>();
     Map<String, String> previous = new HashMap<>();
-    PriorityQueue<Map.Entry<String, Integer>> queue = new PriorityQueue<>(Map.Entry.comparingByValue());
+    PriorityQueue<Map.Entry<String, Integer>> queue =
+        new PriorityQueue<>(Map.Entry.comparingByValue());
     distances.put(word1, 0);
     queue.add(new AbstractMap.SimpleEntry<>(word1, 0));
 
@@ -242,8 +245,8 @@ class MyGraph {
       path.add(at);
     }
     Collections.reverse(path);
-    return "Shortest path from " + word1 + " to " + word2 + ": " + String.join(" -> ", path) + " (weight="
-        + distances.get(word2) + ")";
+    return "Shortest path from " + word1 + " to " + word2 + ": "
+      + String.join(" -> ", path) + " (weight=" + distances.get(word2) + ")";
   }
 
   /**
@@ -259,7 +262,8 @@ class MyGraph {
 
     Map<String, Integer> distances = new HashMap<>();
     Map<String, String> previous = new HashMap<>();
-    PriorityQueue<Map.Entry<String, Integer>> queue = new PriorityQueue<>(Map.Entry.comparingByValue());
+    PriorityQueue<Map.Entry<String, Integer>> queue =
+        new PriorityQueue<>(Map.Entry.comparingByValue());
     distances.put(word, 0);
     queue.add(new AbstractMap.SimpleEntry<>(word, 0));
 
@@ -347,7 +351,8 @@ class MyGraph {
 
     System.out.println("Random Walk Result: " + walk.toString());
 
-    try (BufferedWriter writer = new BufferedWriter(new FileWriter("random_walk_result.txt", true))) {
+    try (BufferedWriter writer =
+           new BufferedWriter(new FileWriter("random_walk_result.txt", true))) {
       writer.newLine();
       writer.write(walkLog.toString());
     } catch (IOException e) {
