@@ -75,7 +75,7 @@ Current scope:     <a href="../../index.html">all classes</a>
     0%
   </span>
   <span class="absValue">
-    (0/39)
+    (0/40)
   </span>
 </td>
 </tr>
@@ -119,7 +119,7 @@ Current scope:     <a href="../../index.html">all classes</a>
 <b class="nc">&nbsp;    System.out.println(&quot;请输入文本文件路径：&quot;);</b>
 <b class="nc">&nbsp;    String  filePath= scanner.nextLine();</b>
 <b class="nc">&nbsp;    try (FileWriter writer = new FileWriter(&quot;random_walk_result.txt&quot;, false)) {</b>
-&nbsp;      // Empty the output file
+<b class="nc">&nbsp;      int flag = 1; // Empty the output file</b>
 <b class="nc">&nbsp;    } catch (IOException e) {</b>
 <b class="nc">&nbsp;      System.out.println(&quot;清空输出文件出错&quot; + e.getMessage());</b>
 &nbsp;      // return;
@@ -247,8 +247,8 @@ Current scope:     <a href="../../index.html">all classes</a>
 &nbsp;    if (!adjList.containsKey(word1) || !adjList.containsKey(word2)) {
 &nbsp;      return &quot;No &quot; + word1 + &quot; or &quot; + word2 + &quot; in the graph!&quot;;
 &nbsp;    }
-&nbsp;    Set&lt;String&gt; bridgeWords = adjList.get(word1).keySet().stream()
-&nbsp;        .filter(w -&gt; adjList.get(w) != null &amp;&amp; adjList.get(w).containsKey(word2))
+&nbsp;    Set&lt;String&gt; bridgeWords = adjList.get(word1)
+&nbsp;        .keySet().stream().filter(w -&gt; adjList.get(w) != null &amp;&amp; adjList.get(w).containsKey(word2))
 &nbsp;        .collect(Collectors.toSet());
 &nbsp;    if (bridgeWords.isEmpty()) {
 &nbsp;      return &quot;No bridge words from &quot; + word1 + &quot; to &quot; + word2 + &quot;!&quot;;
@@ -297,6 +297,9 @@ Current scope:     <a href="../../index.html">all classes</a>
 &nbsp;  public String calcShortestPath(String word1, String word2) {
 &nbsp;    if (!adjList.containsKey(word1) || !adjList.containsKey(word2)) {
 &nbsp;      return &quot;No &quot; + word1 + &quot; or &quot; + word2 + &quot; in the graph!&quot;;
+&nbsp;    }
+&nbsp;    if (word1.equals(word2)) {
+&nbsp;      return &quot;Shortest path from &quot; + word1 + &quot; to &quot; + word1 + &quot;: &quot; + word1 + &quot; (weight=0)&quot;;
 &nbsp;    }
 &nbsp;    Map&lt;String, Integer&gt; distances = new HashMap&lt;&gt;();
 &nbsp;    Map&lt;String, String&gt; previous = new HashMap&lt;&gt;();
@@ -472,7 +475,7 @@ Current scope:     <a href="../../index.html">all classes</a>
 
 <div class="footer">
     
-    <div style="float:right;">generated on 2024-06-11 09:33</div>
+    <div style="float:right;">generated on 2024-06-13 22:00</div>
 </div>
 </body>
 </html>

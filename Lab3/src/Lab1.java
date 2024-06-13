@@ -209,6 +209,9 @@ class MyGraph {
     if (!adjList.containsKey(word1) || !adjList.containsKey(word2)) {
       return "No " + word1 + " or " + word2 + " in the graph!";
     }
+    if (word1.equals(word2)) {
+      return "Shortest path from " + word1 + " to " + word1 + ": " + word1 + " (weight=0)";
+    }
     Map<String, Integer> distances = new HashMap<>();
     Map<String, String> previous = new HashMap<>();
     PriorityQueue<Map.Entry<String, Integer>> queue =

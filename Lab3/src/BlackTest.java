@@ -24,11 +24,7 @@
     }
 
     @Test
-<<<<<<< HEAD
     void testQueryBridgeWords_WithBridgeWords() {
-=======
-    void 给git testQueryBridgeWords_WithBridgeWords() {
->>>>>>> Lab3b
       String result = graph.queryBridgeWords("apple", "date");
       assertEquals("The bridge words from apple to date are: banana.", result);
     }
